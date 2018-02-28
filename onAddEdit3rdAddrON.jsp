@@ -44,7 +44,7 @@
 <%@ page import="org.apache.commons.lang.StringEscapeUtils"%>
 
 <jsp:useBean id="OnAddEdit3rdAddrBean" scope="request" class="oscar.onAddEdit3rdAddrBean"/>
-<jsp.setProperty name="user" property="*"/>
+<jsp.setProperty name="OnAddEdit3rdAddrBean" property="*"/>
 
 <%	onAddEdit3rdAddrBean.setTestBoolean(true);
 	if(OnAddEdit3rdAddrBean.isTestBoolean()){%>
