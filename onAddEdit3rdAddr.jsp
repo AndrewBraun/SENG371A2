@@ -22,16 +22,15 @@
 	String roleName$ = (String)session.getAttribute("userrole") + "," + (String) session.getAttribute("user");
 	boolean authed=true;
 %>
-<security:oscarSec roleName="<%=roleName$%>" objectName="_billing" rights="w" reverse="<%=true%>">
+<security:oscarSec roleName="<%=roleName$%>" objectName="_admin.billing,_admin" rights="w" reverse="<%=true%>">
 	<%authed=false; %>
-	<%response.sendRedirect("../../../securityError.jsp?type=_billing");%>
+	<%response.sendRedirect(request.getContextPath() + "/securityError.jsp?type=_admin&type=_admin.billing");%>
 </security:oscarSec>
 <%
 	if(!authed) {
 		return;
 	}
 %>
-
 
 <%if (session.getAttribute("user") == null) {
 	response.sendRedirect("../logout.jsp");
@@ -48,13 +47,13 @@
 
 <%	bean.init(request, out);
 	bean.runJavaCode();
-%>
+	%>
 
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 <html:html locale="true">
 	<head>
-		<script type="text/javascript" src="<%= request.getContextPath() %>/js/global.js"></script>
+		<script type="text/javascript" src="<%= bean.getRequest().getContextPath() %>/js/global.js"></script>
 		<title>Add/Edit Service Code</title>
 		<link rel="stylesheet" type="text/css" href="billingON.css" />
 		<link rel="StyleSheet" type="text/css" href="../web.css" />
